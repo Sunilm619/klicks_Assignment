@@ -24,24 +24,16 @@ function SignupForm() {
     setErrorMessage("");
     try {
       if (isLogin) {
-        const response = await axios.post(
-          "http://localhost:5500/api/login",
-          formData,
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        );
+        const response = await axios.post("/api/login", formData, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
         console.log("Login success:", response.data);
         navigate("/home");
       } else {
-        const response = await axios.post(
-          "http://localhost:5500/api/signup",
-          formData,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const response = await axios.post("/api/signup", formData, {
+          headers: { "Content-Type": "application/json" },
+        });
         console.log("Signup success:", response.data);
         setIsLogin(true);
       }
